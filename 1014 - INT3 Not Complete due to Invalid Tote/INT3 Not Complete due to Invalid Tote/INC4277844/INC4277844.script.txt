@@ -1,0 +1,35 @@
+L1 ITASK : ITASK0465500:1014- L1Script approval request - INC4277844
+ITASK : ITASK0465499:INT3 Not Complete due to Invalid Tote
+DBR : https://dbr.wms.nike.com/DBR/Details/276247
+INC : INC4277844- 1014 - INT3 Not Complete due to Invalid Tote
+PRB : PRB0054251 - 1014 TASKING INT 3 not going into completed status due to failed 204 message
+
+
+
+DB details:
+SITE NAME: NALC
+SYSTEM NAME: WMoS
+DATABASE NAME: W1014PRD
+SCHEMA : NIKEWM1014PRD
+NEED BY: ASAP
+COORDINATION PLAN: No outage required
+
+
+
+
+update task_dtl set cntr_nbr = '00300000000000175211',
+mod_date_time = sysdate,
+user_id = 'SQL_INC4277844'
+where stat_code < '90'
+and TASK_ID in ('199410276)
+and invn_need_type in ('3') 
+
+update task_dtl set cntr_nbr = '00300000000000141902',
+mod_date_time = sysdate,
+user_id = 'SQL_INC4277844'
+where stat_code < '90'
+and TASK_ID in ('196732461')
+and invn_need_type in ('3')
+
+
+Select * from task_dtl where stat_code < '90' and TASK_ID in (199410276) and invn_need_type in ('3');

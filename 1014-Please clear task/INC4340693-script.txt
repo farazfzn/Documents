@@ -1,0 +1,23 @@
+
+Script Approval: 1014- need a status update.
+L1-ITASK  ITASK0472452 - 1014-need a status update
+L1-ITASK  ITASK0472453 - 1014 - L1 Script Approval Requested -INC4340693
+
+DBR : https://dbr.wms.nike.com/DBR/Details/283936
+INC : INC4340693 -1014-need a status update.
+PRB : PRB0058561 - 1014 TASKING INT 3 Updating to cancelled Status.
+
+DB details:
+SITE NAME:          NALC
+SYSTEM NAME:        WMoS
+DATABASE NAME:      W1014PRD
+SCHEMA            : NIKEWM1014PRD
+NEED BY:            ASAP
+COORDINATION PLAN:  No outage required
+
+UPDATE task_dtl SET stat_code = 99, mod_date_time = sysdate, user_id = 'SQL_INC4340693'
+WHERE task_id IN ('198799325') AND invn_need_type IN ('3') AND stat_code < 90
+
+UPDATE task_hdr SET stat_code = 99, mod_date_time = sysdate, user_id = 'SQL_INC4340693'
+WHERE task_id IN ('198799325') AND invn_need_type IN ('3') AND stat_code < 90
+

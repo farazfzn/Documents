@@ -1,0 +1,4 @@
+select tc_order_id,major_order_ctrl_nbr,do_status,order_status,major_minor_order from orders where tc_order_id in ('1060033092');
+
+
+select tc_order_id,major_order_ctrl_nbr,do_status,order_status,major_minor_order from orders where major_order_ctrl_nbr in ('');

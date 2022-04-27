@@ -1,0 +1,38 @@
+ITASK   : ITASK0473876- 1008 the ilpn is saying locked /deleted but was allocated and pulled but now it                          won't clear on the spur to go over to processing
+L1ITASK : ITASK0473877- 1008 - L1 SCRIPT APPROVAL REQUESTED - INC4353493
+DBR     : https://dbr.wms.nike.com/DBR/Details/285407
+          https://dbr.wms.nike.com/DBR/Details/285409
+INC : INC4353493 -  1008 -the task 13506005 is said to be locked and deleted
+PRB : PRB0056630 - 1008 TASKING INT 10 task stuck in Dropzone status, the 203 Divert Message failed  and                     task did not move to complete status
+
+SITE NAME: ADAPT
+SYSTEM NAME: WMoS
+DATABASE NAME: WS1008PR
+SCHEMA: WMS1008PRD
+NEED BY: ASAP
+COORDINATION PLAN: No outage required
+
+
+update task_dtl set stat_code='99', mod_date_time = sysdate, user_id = 'SQL_INC4353493'
+where TASK_ID in ('13506005') and invn_need_type ='10' and cntr_nbr ='00008866682017542748'
+
+
+update task_hdr set stat_code='90', MOD_DATE_TIME = sysdate, USER_ID = 'SQL_INC4353493'
+where task_id in ('13506005') and invn_need_type = '10' and STAT_CODE < '90'
+
+
+update lpn l
+set
+l.lpn_facility_status = '50',
+l.last_updated_dttm = sysdate,
+l.last_updated_source = 'SQL_INC4353493'
+where l.inbound_outbound_indicator = 'I'
+and l.lpn_facility_status in ('64')
+and l.lpn_type = '1'
+and tc_lpn_id in ('00008866682017542748')
+
+
+
+
+
+

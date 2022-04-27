@@ -1,0 +1,24 @@
+
+SCRIPT APPROVAL: 1014-Employee's is locked in tote
+L1 ITASK: ITASK0474011- 1014 USERS STUCK IN LPNS
+L1 ITASK: ITASK0474012- 1014 -L1 Script Approval Requested -INC4354973
+DBR     : 
+INC#    : INC4354973- 1014 USERS STUCK IN LPNS
+PRB#    : PRB0049574 - 1014 PACKING Tote locked by user
+
+
+
+SITE NAME: NALC
+SYSTEM NAME: WMoS
+DATABASE NAME: WC1014PR
+SCHEMA: NIKEWM1014PRD
+NEED BY: ASAP 
+COORDINATION PLAN: no outage required
+
+
+===============================================================
+UPDATE lpn
+SET    tc_reference_lpn_id = '',
+    last_updated_dttm = SYSDATE,
+    last_updated_source = 'SQL_INC4354973'
+WHERE tc_lpn_id IN ('003000000000BUGGY048 ') and TC_REFERENCE_LPN_ID is not null and INBOUND_OUTBOUND_INDICATOR = 'I' and LPN_FACILITY_STATUS  in  ( '64', '45', '50')

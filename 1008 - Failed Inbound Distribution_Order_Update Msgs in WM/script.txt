@@ -1,0 +1,17 @@
+update orders set
+ORDER_STATUS = '5',
+TRANS_PLAN_OWNER = 1,
+line_haul_ship_via=null,
+do_status = '100',
+has_import_error = '0',
+compartment_no = null,
+last_updated_dttm = sysdate,
+last_updated_source = 'SQL_INC4270642' where do_status=104 and nvl(major_minor_order,0)!='M' and tc_order_id in ('902634754','902634756','902634757')
+
+
+
+
+
+delete from error_log where (description LIKE '%No applicable candidate found%' or description like '%The transportation status is greater than 5 (Planned).%')
+and order_id in
+(select order_id from orders where tc_order_id in ('902634754','902634756','902634757'))

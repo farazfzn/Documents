@@ -1,0 +1,5 @@
+select task_id , cntr_nbr , invn_need_type, stat_code from task_dtl
+where cntr_nbr in ( select tc_lpn_id from lpn where tc_parent_lpn_id = '00000009990006568389') and stat_code < 90;
+
+if Int is 90 then ask the user to
+There are open int 90 tasks for the mentioned pallets, please help to complete the below 

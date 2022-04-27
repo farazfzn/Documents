@@ -1,0 +1,19 @@
+
+script to get actual tote :
+select cntr_nbr from prod_trkg_tran where task_id = '199410276';
+
+
+1st scenario:
+
+-When u dont see any ilpn in activity tracking
+
+-when the ILPN in activity tracking is in Putaway status
+
+then we can update the status to 99 or 90
+
+( pulled units is equal to allocated then 90)
+
+pulled units is less than allocated then 99
+
+script to get actual tote :
+select cntr_nbr from prod_trkg_tran where task_id = '199410276';

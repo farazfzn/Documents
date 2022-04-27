@@ -1,0 +1,16 @@
+Task 1   : TASK2776721 - High :  1053305954 Please update line haul ship via to FPOS
+Task 2   : TASK2776832 - 1014 - L1 Script Approve Requested- RITM2358593
+DBR      : https://dbr.wms.nike.com/DBR/Details/283759
+INC#     : RITM2358593 - High : 1053305954 Please update line haul ship via to FPOS
+ 
+
+SITE NAME	    : NALC
+SYSTEM NAME         : WMoS
+DATABASE NAME       : W1014PRD
+SCHEMA		    : NIKEWM1014PRD
+NEED BY	            : ASAP
+COORDINATION PLAN   : no outage required
+
+update orders  set line_haul_ship_via  = 'FPOS', is_routed = '1', assigned_mot_id = '1', assigned_service_level_id = '310' , assigned_carrier_id = '46',
+last_updated_dttm = sysdate , last_updated_source = 'SQL_RITM2358593'
+where tc_order_id in('1053305954') and do_status = '110' and line_haul_ship_via is null

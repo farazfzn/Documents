@@ -1,0 +1,28 @@
+ITASK    :ITASK0472298  :INC4339672-  Orders having Ship via with fulfillment status in Error and TMS                                         status in Ready for Planning
+L1 ITASK :ITASK0472299  :1008 - L1 SCRIPT APPROVAL REQUEST -INC4339672
+DBR : 
+INC :INC4339672- 1008 -  Orders having Ship via with fulfillment status in Error and TMS status in Ready                          for Planning
+PRB : PRB0058324 - 1008 WAVING Orders not routed and ship_via not null with fulfillment status in                    "Error" and TMS status in "Ready for Planning"
+
+SITE NAME: ADAPT
+SYSTEM NAME: WMoS
+DATABASE NAME: WS1008PR
+SCHEMA: WMS1008PRD
+NEED BY: ASAP
+COORDINATION PLAN: No outage required
+
+update orders set
+ORDER_STATUS = '5',
+TRANS_PLAN_OWNER = 1,
+line_haul_ship_via=null,
+do_status = '100',
+has_import_error = '0',
+compartment_no = null,
+last_updated_dttm = sysdate,
+last_updated_source = 'SQL_INC4339672'
+where do_status=104 and nvl(major_minor_order,0)!='M' and order_status=9 and line_haul_ship_via is not null
+
+
+
+delete from error_log where description LIKE '%The transportation status is greater than 5 (Planned).%'
+and order_id in('903252401','903266648','903266687','903266649','903266691','903266660','903266652','903252411','903246983','903246981','903246984','903246986','903246982','903246988','903263840','903248496','903247382','903266650','903247310','903247307','903247312','903247299','903247318','903263841','903243980','903246989','903247317','903247325','903266647','903252413','903252425','903252409','903243989','903244006','903248506','903245134','903246955','903247311','903247512','903247314','903250715','903248512','903247386','903246957','903247303','903247309','903247315','903247302','903244367','903249091','903249096')

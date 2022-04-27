@@ -1,0 +1,18 @@
+L1-ITASK : TASK2737876- 1014 -1014 Failed Purge -RITM2328316
+L1-ITASK : TASK2738487- 1014 - L1 Script Approval Request -RITM2328316
+DBR : https://dbr.wms.nike.com/DBR/Details/277271
+INC : 1014 - RITM2328316
+
+
+DB details:
+SITE NAME: NALC
+SYSTEM NAME: WMoS
+DATABASE NAME: WC1014PR
+SCHEMA: NIKEWM1014PRD
+NEED BY: ASAP
+COORDINATION PLAN: no outage required
+
+delete  from pix_tran@WMSADMIN_DBLINK A
+where exists (select 1 from pix_tran P
+where P.pix_tran_id = A.pix_tran_id)
+

@@ -1,0 +1,25 @@
+L1 ITASK: ITASK0473983- 1008 - 13509402 INT 9 - iLPN replen to unit pick 40 Partially assembled 10
+L1 ITASK: ITASK0473984- 1008 - L1 script approval requested_INC4354561
+DBR     :https://dbr.wms.nike.com/DBR/Details/285449
+INC#    : INC4354561- 1008 - 13509402 INT 9 - iLPN replen to unit pick 40 Partially assembled 10
+PRB#    : PRB0055609 1008 TASKING Task Id missing Current Work group and work area and in status Partially Assembled
+
+
+SITE NAME           : ADAPT
+SYSTEM NAME         : WMoS
+DATABASE NAME       : WS1008PR
+SCHEMA              : WMS1008PRD
+NEED BY             : ASAP      
+COORDINATION PLAN: no outage required
+
+
+---Check the task missing work group and area-- 
+
+--------- Take the wrk grp and area from the task details - double click task from ui
+Go down u will g=find the wrk grp and area update the same
+ 
+update task_hdr set START_CURR_WORK_GRP = 'Z23',
+ START_CURR_WORK_AREA = 'A002', MOD_DATE_TIME = sysdate,
+ USER_ID = 'SQL_INC4354561'
+where task_id =  '13509402' and STAT_CODE < '90' and START_CURR_WORK_GRP is null and START_CURR_WORK_AREA is null
+

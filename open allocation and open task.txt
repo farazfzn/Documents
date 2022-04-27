@@ -1,0 +1,11 @@
+open task
+
+select task_id ,Cntr_nbr , stat_code, invn_need_type, carton_nbr from Task_dtl where cntr_nbr in (
+'00300000000000216685') and stat_code < 90;
+
+
+open allocation
+
+
+select Cntr_nbr , stat_code, invn_need_type, carton_nbr from alloc_invn_dtl where cntr_nbr in (
+'00300000000000216685') and stat_code < 90;
